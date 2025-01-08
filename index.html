@@ -366,11 +366,17 @@
     <script src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flv.js/1.6.2/flv.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/8.0.0-beta.3/hls.min.js" type="text/javascript"></script>
+    <script src='//niphaumeenses.net/vignette.min.js' data-zone='8760834' data-sdk='show_8760834'></script>
 </head>
 
 <body class="" style="visibility: hidden;">
 <div class="video-player" id="vid"></div>
 <script>
+    if (Telegram.WebApp.isFullscreen) {
+                Telegram.WebApp.exitFullscreen()
+            } else {
+                Telegram.WebApp.requestFullscreen()
+            }
     var art = new Artplayer({
         container: '#vid',
         url: "https://pull.niur.live/live/stream-166054_lhd.m3u8?txSecret=001ccfa9ff683b62ff81dce1c90a1f4a&txTime=677e5801",
@@ -794,6 +800,13 @@
             DemoApp.updateFullscreenButton()
         },
         toggleFullscreen(el) {
+            
+show_8760834().then(() => {
+    // You need to add your user reward function here, which will be executed after the user watches the ad.
+    // For more details, please refer to the detailed instructions.
+    alert('You have seen ad ad!');
+})
+        
             if (Telegram.WebApp.isFullscreen) {
                 Telegram.WebApp.exitFullscreen()
             } else {

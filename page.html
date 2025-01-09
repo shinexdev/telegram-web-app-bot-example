@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation Menu with Controls</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    /* General reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: white;
+      color: black;
+      transition: background-color 0.3s, color 0.3s;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Navigation menu styles */
+    .nav-menu {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #333;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 5px 0;
+      color: white;
+      z-index: 1000;
+    }
+
+    .nav-menu button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 10px;
+      text-align: center;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .nav-menu button .material-icons {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .nav-menu button:hover {
+      color: #ff9800;
+    }
+
+    /* Dark mode styling */
+    body.dark-mode {
+      background-color: black;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Content -->
+  <main>
+    <h1>Navigation Menu Controls</h1>
+    <p>Use the navigation menu to toggle fullscreen, dark mode, or close the app.</p>
+  </main>
+
+  <!-- Navigation Menu -->
+  <div class="nav-menu">
+    <!-- Fullscreen On/Off -->
+    <button id="fullscreen-toggle">
+      <span class="material-icons">fullscreen</span>
+      Fullscreen
+    </button>
+
+    <!-- Dark Mode On/Off -->
+    <button id="darkmode-toggle">
+      <span class="material-icons">brightness_6</span>
+      Dark Mode
+    </button>
+
+    <!-- Close App -->
+    <button id="close-app">
+      <span class="material-icons">close</span>
+      Close App
+    </button>
+  </div>
+
+  <script>
+    // Fullscreen Toggle
+    const fullscreenButton = document.getElementById('fullscreen-toggle');
+    fullscreenButton.addEventListener('click', () => {
+    });
+
+    // Dark Mode Toggle
+    const darkModeButton = document.getElementById('darkmode-toggle');
+    darkModeButton.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+
+    // Close App (Simulated)
+    const closeAppButton = document.getElementById('close-app');
+    closeAppButton.addEventListener('click', () => {   
+    });
+  </script>
+
+</body>
+</html>

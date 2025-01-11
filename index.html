@@ -10,24 +10,33 @@
 <body>
     <div id="dplayer"></div>
 
+    <!-- flv.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/flv.js/dist/flv.min.js"></script>
     <!-- DPlayer JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
-    <!-- flv.js library for FLV support -->
-    <script src="https://cdn.jsdelivr.net/npm/flv.js/dist/flv.min.js"></script>
     
     <script>
         // Initialize the DPlayer
         const dp = new DPlayer({
             container: document.getElementById('dplayer'),
             video: {
-                url: 'https://pull06.scstream.net/live/stream-494201_lhd.flv?auth_key=1736592394-0-0-8397affaa894d17246c1ae2f66f6a39b', // Replace with your FLV video file path
-                type: 'flv', // Set the type to FLV
+                url: 'https://pull06.scstream.net/live/stream-494201_lhd.flv?auth_key=1736592574-0-0-7702e92d9f44a6e6f4ce7d287c3b2566', // Replace with your FLV video file path
+                type: 'customFlv', // Custom type for FLV using flv.js
+                customType: {
+                    customFlv: function(video, player) {
+                        if (flvjs.isSupported()) {
+                            const flvPlayer = flvjs.createPlayer({
+                                type: 'flv',
+                                url: video.src
+                            });
+                            flvPlayer.attachMediaElement(video);
+                            flvPlayer.load();
+                        } else {
+                            console.error('FLV.js is not supported in this browser.');
+                        }
+                    }
+                }
             },
-            plugins: [
-                DPlayer.plugins.flvjs({
-                    flv: window.flvjs,
-                }),
-            ],
             autoplay: false,
             theme: '#42b983',
         });
